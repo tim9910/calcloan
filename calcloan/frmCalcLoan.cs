@@ -175,6 +175,18 @@ namespace calcloan
 
                 if (controlName == "txtTotalHousePrice")
                 {
+
+                    if (value < 1 || value > 100000000)
+                    {
+                        msgLabel.Text = spacestr + "房屋總價1~10,000萬";
+                        msgLabel.Visible = true;
+                    }
+                    else
+                    {
+                        msgLabel.Text = "";
+                        msgLabel.Visible = false;
+                    }
+
                     if (comboBoxDownType.SelectedIndex == 1) // 選擇金額
                     {
                         //自備款金額fundsprice. fundsprice需小於房屋總價value
@@ -319,6 +331,18 @@ namespace calcloan
 
                 if (textBox.Name == "txtTotalHousePrice")
                 {
+                    if (val < 1 || val > 100000000)
+                    {
+                        msgLabel.Text = spacestr + "房屋總價1~10,000萬";
+                        msgLabel.Visible = true;
+                        e.Cancel = true;// 阻止焦點離開
+                    }
+                    else
+                    {
+                        msgLabel.Text = "";
+                        msgLabel.Visible = false;
+                    }
+
                     if (comboBoxDownType.SelectedIndex == 1) // 選擇金額
                     {
                         //自備款金額fundsprice. fundsprice需小於房屋總價 val
@@ -525,7 +549,8 @@ namespace calcloan
 
             //// 顯示計算結果
             // 貸款總金額
-            labelLoanAmt.Text = string.Format("{0:C2}", loanAmount);
+            //labelLoanAmt.Text = string.Format("{0:C2}", loanAmount);
+            labelLoanAmt.Text = $"{loanAmount:C2}";
             // 每月應繳金額
             labelMonthAmt.Text = string.Format("{0:C2}", monthlyPayment);
             // 首期利息 

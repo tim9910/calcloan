@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
@@ -53,9 +54,22 @@ namespace calcloan
 
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            var result = MessageBox.Show("是否要關閉", "關閉視窗", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
 
         private void frmCalcLoan_Load(object sender, EventArgs e)
         {
+            // 註冊 FormClosing 事件處理程序
+            //this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
+
             // 需要格式化的 TextBox 加入事件處理
             this.txtTotalHousePrice.KeyPress += new KeyPressEventHandler(Numeric_KeyPress);
             this.txtTotalHousePrice.TextChanged += new EventHandler(TextBox_TextChanged);
@@ -82,7 +96,6 @@ namespace calcloan
             this.txtLoanTerm.TextChanged += new EventHandler(TextBox_TextChanged);
             this.txtLoanTerm.Validating += new CancelEventHandler(TextBox_Validating);
             this.txtLoanTerm.Leave += new EventHandler(TextBox_Leave);
-
 
             this.comboBoxDownType.SelectedIndexChanged += new EventHandler(comboBoxDownType_SelectedIndexChanged);
 
@@ -176,9 +189,9 @@ namespace calcloan
                 if (controlName == "txtTotalHousePrice")
                 {
 
-                    if (value < 1 || value > 100000000)
+                    if (value < 0 || value > 100000000)
                     {
-                        msgLabel.Text = spacestr + "房屋總價1~10,000萬";
+                        msgLabel.Text = spacestr + "房屋總價 0~10,000萬";
                         msgLabel.Visible = true;
                     }
                     else
@@ -331,9 +344,9 @@ namespace calcloan
 
                 if (textBox.Name == "txtTotalHousePrice")
                 {
-                    if (val < 1 || val > 100000000)
+                    if (val < 0 || val > 100000000)
                     {
-                        msgLabel.Text = spacestr + "房屋總價1~10,000萬";
+                        msgLabel.Text = spacestr + "房屋總價 0~10,000萬";
                         msgLabel.Visible = true;
                         e.Cancel = true;// 阻止焦點離開
                     }

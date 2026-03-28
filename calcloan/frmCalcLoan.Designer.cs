@@ -414,6 +414,7 @@
             this.Name = "frmCalcLoan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "個人房貸試算器";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.frmCalcLoan_Load);
             this.grpInput.ResumeLayout(false);
             this.grpInput.PerformLayout();

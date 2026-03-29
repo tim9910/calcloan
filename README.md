@@ -97,11 +97,11 @@ $$
 
 - 欄位輸入時即時檢查數值範圍，不符規則時即時提示錯誤。
 
-![數值範圍檢核](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/chkrange1.png)
+![數值範圍檢核](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/chkrange.gif)
 
 - 禁止非數字或不合法字元輸入，並於欄位下方顯示提示訊息。
 
-![不合字元檢核](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/chk2.png)
+![不合字元檢核](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/chk2.gif)
 
 - 所有輸入欄位皆有單位提示（如 NT$、%、年）。
 
@@ -122,6 +122,8 @@ $$
 - 輸入年利率與貸款年限。
 - 選擇寬限期。
 - 按下試算按鈕，查看輸出結果。
+- 關掉應用程式
+
 - 系統操作畫面
 
 ![系統操作](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/runapp.gif)

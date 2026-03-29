@@ -14,44 +14,6 @@
 - 作業系統：Windows
 - 專案型態：Windows Forms Application
 
-## 專案結構 (示意)
-
-```text
-calcloan/
-├─ calcloan/
-│  ├─ Properties/
-│  │  ├─ AssemblyInfo.cs
-│  │  ├─ Resources.Designer.cs
-│  │  ├─ Resources.resx
-│  │  ├─ Settings.Designer.cs
-│  │  └─ Settings.settings
-│  ├─ Resources/
-│  │  ├─ CurrentInstructionPointer_16x.png
-│  │  ├─ OverlayRunning.png
-│  │  ├─ ScrollbarArrowCollapsed.png
-│  │  ├─ ScrollbarArrowCollapsed.svg
-│  │  ├─ StatusAlert.12.12.png
-│  │  ├─ StatusAlert.13.13.png
-│  │  ├─ StatusInvalid.10.10.png
-│  │  ├─ StatusInvalid.13.13.png
-│  │  ├─ StatusInvalid.15.15.png
-│  │  └─ StatusInvalid.18.18.png
-│  │  
-│  ├─ App.config
-│  ├─ Program.cs
-│  ├─ calcloan.csproj
-│  ├─ frmCalcLoan.Designer.cs
-│  ├─ frmCalcLoan.cs
-│  └─ frmCalcLoan.resx
-│
-├─ .gitattributes
-├─ .gitignore
-├─ LICENSE.txt
-├─ README.md
-└─ calcloan.slnx
-
-```
-
 ## 功能需求
 
 ### 輸入資訊

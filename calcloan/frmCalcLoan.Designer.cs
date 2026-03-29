@@ -92,10 +92,10 @@
             // 
             this.txtPaymentAmt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPaymentAmt.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaymentAmt.Location = new System.Drawing.Point(517, 100);
+            this.txtPaymentAmt.Location = new System.Drawing.Point(515, 100);
             this.txtPaymentAmt.Name = "txtPaymentAmt";
             this.txtPaymentAmt.Size = new System.Drawing.Size(169, 35);
-            this.txtPaymentAmt.TabIndex = 14;
+            this.txtPaymentAmt.TabIndex = 4;
             this.txtPaymentAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // comboBoxDownType
@@ -106,19 +106,20 @@
             this.comboBoxDownType.Location = new System.Drawing.Point(217, 100);
             this.comboBoxDownType.Name = "comboBoxDownType";
             this.comboBoxDownType.Size = new System.Drawing.Size(277, 33);
-            this.comboBoxDownType.TabIndex = 13;
+            this.comboBoxDownType.TabIndex = 3;
             // 
             // btnCalcu
             // 
-            this.btnCalcu.Font = new System.Drawing.Font("微軟正黑體", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnCalcu.Location = new System.Drawing.Point(547, 168);
+            this.btnCalcu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnCalcu.Font = new System.Drawing.Font("微軟正黑體", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnCalcu.Location = new System.Drawing.Point(517, 168);
             this.btnCalcu.Margin = new System.Windows.Forms.Padding(2);
             this.btnCalcu.Name = "btnCalcu";
-            this.btnCalcu.Size = new System.Drawing.Size(141, 109);
-            this.btnCalcu.TabIndex = 11;
-            this.btnCalcu.Text = "開始試算 (本息平均攤還)";
+            this.btnCalcu.Size = new System.Drawing.Size(171, 109);
+            this.btnCalcu.TabIndex = 12;
+            this.btnCalcu.Text = "試算";
             this.btnCalcu.UseCompatibleTextRendering = true;
-            this.btnCalcu.UseVisualStyleBackColor = true;
+            this.btnCalcu.UseVisualStyleBackColor = false;
             this.btnCalcu.Click += new System.EventHandler(this.btnCalcu_Click);
             // 
             // msgLabel
@@ -146,7 +147,7 @@
             this.comboBoxGracePeriod.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxGracePeriod.Name = "comboBoxGracePeriod";
             this.comboBoxGracePeriod.Size = new System.Drawing.Size(278, 33);
-            this.comboBoxGracePeriod.TabIndex = 9;
+            this.comboBoxGracePeriod.TabIndex = 11;
             // 
             // label5
             // 
@@ -155,7 +156,7 @@
             this.label5.Location = new System.Drawing.Point(30, 249);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(158, 28);
-            this.label5.TabIndex = 8;
+            this.label5.TabIndex = 10;
             this.label5.Text = "寬限期(選填)：";
             // 
             // txtLoanTerm
@@ -166,7 +167,7 @@
             this.txtLoanTerm.Margin = new System.Windows.Forms.Padding(2);
             this.txtLoanTerm.Name = "txtLoanTerm";
             this.txtLoanTerm.Size = new System.Drawing.Size(278, 35);
-            this.txtLoanTerm.TabIndex = 7;
+            this.txtLoanTerm.TabIndex = 9;
             this.txtLoanTerm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
@@ -176,7 +177,7 @@
             this.label4.Location = new System.Drawing.Point(30, 196);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(158, 28);
-            this.label4.TabIndex = 6;
+            this.label4.TabIndex = 8;
             this.label4.Text = "貸款年限(年)：";
             // 
             // txtAnnualRate
@@ -187,7 +188,7 @@
             this.txtAnnualRate.Margin = new System.Windows.Forms.Padding(2);
             this.txtAnnualRate.Name = "txtAnnualRate";
             this.txtAnnualRate.Size = new System.Drawing.Size(278, 35);
-            this.txtAnnualRate.TabIndex = 5;
+            this.txtAnnualRate.TabIndex = 7;
             this.txtAnnualRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
@@ -197,7 +198,7 @@
             this.label3.Location = new System.Drawing.Point(30, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(177, 28);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 6;
             this.label3.Text = "貸款年利率(%)：";
             // 
             // txtDownPayment
@@ -207,7 +208,7 @@
             this.txtDownPayment.Location = new System.Drawing.Point(515, 100);
             this.txtDownPayment.Name = "txtDownPayment";
             this.txtDownPayment.Size = new System.Drawing.Size(97, 35);
-            this.txtDownPayment.TabIndex = 3;
+            this.txtDownPayment.TabIndex = 5;
             this.txtDownPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2

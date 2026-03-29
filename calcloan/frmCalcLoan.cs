@@ -17,6 +17,7 @@ namespace calcloan
     public partial class frmCalcLoan : Form
     {
         private string spacestr = "     ";
+        ToolTip toolTip = null;
 
         public frmCalcLoan()
         {
@@ -26,19 +27,19 @@ namespace calcloan
             this.txtTotalHousePrice.Tag = "NT$";  // 用來加 NT$
             this.txtPaymentAmt.Tag = "NT$";  // 用來加 NT$
             this.txtDownPayment.Tag = "%";  // 用來加 %
-            this.txtTotalHousePrice.Text = string.Format("{0:C0}", 0);
-            this.txtPaymentAmt.Text = string.Format("{0:C0}", 0);
-            this.txtDownPayment.Text = "20"; // 20%頭期款
+            //this.txtTotalHousePrice.Text = string.Format("{0:C0}", 0);
+            //this.txtPaymentAmt.Text = string.Format("{0:C0}", 0);
+            //this.txtDownPayment.Text = "20"; // 20%頭期款
             this.txtAnnualRate.Tag = "%";  // 用來加 %
-            this.txtAnnualRate.Text = "2"; // 2%年利率
+            //this.txtAnnualRate.Text = "2"; // 2%年利率
             this.txtLoanTerm.Tag = " ";
-            this.txtLoanTerm.Text = "30"; //30年貸款期限
+            //this.txtLoanTerm.Text = "30"; //30年貸款期限
 
             comboBoxDownType.Items.Add("百分比");
             comboBoxDownType.Items.Add("金額");
-            comboBoxDownType.SelectedIndex = 0; // 預設百分比
-            txtDownPayment.Visible = true;
-            txtPaymentAmt.Visible = false;
+            //comboBoxDownType.SelectedIndex = 0; // 預設百分比
+            //txtDownPayment.Visible = true;
+            //txtPaymentAmt.Visible = false;
 
 
             // 設置 ComboBox 的選項
@@ -49,8 +50,35 @@ namespace calcloan
             comboBoxGracePeriod.Items.Add("48個月");
             comboBoxGracePeriod.Items.Add("60個月");
 
+            //// 預設 "無寬限期"
+            //comboBoxGracePeriod.SelectedIndex = 0;
+            reset();
+            initToolTip();
+        }
+
+        private void initToolTip()
+        {
+            toolTip = new ToolTip();
+            toolTip.SetToolTip(txtTotalHousePrice, "請輸入房屋總價金額，範圍為0~10,000萬");
+            toolTip.SetToolTip(txtDownPayment, "請輸入自備款比率，範圍為0%~90%");
+            toolTip.SetToolTip(txtPaymentAmt, "請輸入自備款金額，需小於房屋總價");
+            toolTip.SetToolTip(txtAnnualRate, "請輸入貸款年利率，範圍為0%~10%");
+            toolTip.SetToolTip(txtLoanTerm, "請輸入貸款年限，範圍為1~30年");
+        }
+
+        private void reset()
+        {
             // 預設 "無寬限期"
             comboBoxGracePeriod.SelectedIndex = 0;
+            this.txtTotalHousePrice.Text = string.Format("{0:C0}", 0);
+            this.txtPaymentAmt.Text = string.Format("{0:C0}", 0);
+            this.txtDownPayment.Text = "20"; // 20%頭期款
+            this.txtAnnualRate.Text = "2"; // 2%年利率
+            this.txtLoanTerm.Text = "30"; //30年貸款期限
+
+            comboBoxDownType.SelectedIndex = 0; // 預設百分比
+            txtDownPayment.Visible = true;
+            txtPaymentAmt.Visible = false;
 
         }
 
@@ -62,6 +90,11 @@ namespace calcloan
             if (result == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+            else
+            {
+                reset();
+                e.Cancel = false;
             }
         }
 

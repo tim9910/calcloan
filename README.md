@@ -69,6 +69,8 @@ $$
 
 ### :pushpin: 每月應繳金額
 
+> 
+
 #### 1. 無寬限期
 
 - 每月應繳金額(本 + 息)
@@ -140,14 +142,15 @@ $$
 
 - 所有數值輸入欄位（如金額、利率、年限）皆採用動態格式化機制，使用者輸入時即時顯示千分位、百分比等格式。
 
-![動態格式化機制](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/dyn1.gif)
+  ![動態格式化機制](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/dyn1.gif)
 
 - 自備款欄位可切換「百分比」與「金額」模式，切換時自動轉換。
 
-![下拉選單自動切換模式](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/dyn2.gif)
+  ![下拉選單自動切換模式](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/dyn2.gif)
 
 - 欄位輸入時即時檢查數值範圍，不符規則時即時提示錯誤。
 
+>
 ![數值範圍檢核](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/chkrange.gif)
 
 - 禁止非數字或不合法字元輸入，並於欄位下方顯示提示訊息。

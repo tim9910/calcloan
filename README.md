@@ -55,6 +55,7 @@
 - 自備款金額
 - 年利率
 - 月利率 $ = \frac{r_{annual}}{12}$
+- $ \text{月利率} = \frac{r_{\text{annual}}}{12} $
 - 貸款年限
 - 總期數 (月) $ = \text{貸款年限} \times 12$
 - 寬限期 (月)
@@ -150,21 +151,20 @@ $$
 
 - 欄位輸入時即時檢查數值範圍，不符規則時即時提示錯誤。
 
->
-![數值範圍檢核](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/chkrange.gif)
+　![數值範圍檢核](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/chkrange.gif)
 
 - 禁止非數字或不合法字元輸入，並於欄位下方顯示提示訊息。
 
-![不合字元檢核](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/chk2.gif)
+　![不合字元檢核](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/chk2.gif)
 
 - 所有輸入欄位皆有單位提示（如 NT$、%、年）。
 
-![單位提示](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/info1.png)
+　![單位提示](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/info1.png)
 
 
 ### 貼心輔助(輸入提示)
 
-![輸入提示](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/info2.gif)
+　　![輸入提示](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/info2.gif)
 
 
 ## 系統操作
@@ -178,7 +178,7 @@ $$
 
 ### 7. 系統操作畫面
 
-![系統操作](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/runapp.gif)
+　　![系統操作](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/runapp.gif)
 
 ## 測試資料與結果
 
@@ -191,7 +191,7 @@ $$
 
 ### 計算結果
 
-![輸出](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/output.png)
+　　![輸出](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/output.png)
 
 
 

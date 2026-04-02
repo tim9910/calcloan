@@ -44,7 +44,7 @@
 - 輸入區：包含房屋總價、自備款模式切換、年利率、貸款年限、寬限期選項，以及試算按鈕。
 - 計算結果區：顯示貸款總金額、每月應繳金額、總利息支出、總還款金額、首期利息及本金。
 
-![輸出](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/ui.png)
+  ![輸出](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/ui.png)
 
 
 ## 計算邏輯說明

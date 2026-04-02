@@ -58,6 +58,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.grpInput.SuspendLayout();
             this.grpOutput.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +67,7 @@
             // 
             this.grpInput.BackColor = System.Drawing.SystemColors.Control;
             this.grpInput.Controls.Add(this.txtPaymentAmt);
+            this.grpInput.Controls.Add(this.progressBar1);
             this.grpInput.Controls.Add(this.comboBoxDownType);
             this.grpInput.Controls.Add(this.btnCalcu);
             this.grpInput.Controls.Add(this.msgLabel);
@@ -132,11 +134,11 @@
             this.msgLabel.Location = new System.Drawing.Point(158, 300);
             this.msgLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.msgLabel.Name = "msgLabel";
-            this.msgLabel.Size = new System.Drawing.Size(0, 30);
+            this.msgLabel.Size = new System.Drawing.Size(28, 33);
             this.msgLabel.TabIndex = 10;
+            this.msgLabel.Text = "    ";
             this.msgLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msgLabel.UseCompatibleTextRendering = true;
-            this.msgLabel.Visible = false;
             // 
             // comboBoxGracePeriod
             // 
@@ -404,6 +406,14 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.progressBar1.Location = new System.Drawing.Point(217, 312);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(277, 21);
+            this.progressBar1.TabIndex = 13;
+            // 
             // frmCalcLoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -456,6 +466,7 @@
         private System.Windows.Forms.Label labelMonthAmt;
         private System.Windows.Forms.Label labelTotalPayment;
         private System.Windows.Forms.Label labelTotalInterest;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.grpInput = new System.Windows.Forms.GroupBox();
             this.txtPaymentAmt = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.comboBoxDownType = new System.Windows.Forms.ComboBox();
             this.btnCalcu = new System.Windows.Forms.Button();
             this.msgLabel = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.grpInput.SuspendLayout();
             this.grpOutput.SuspendLayout();
             this.SuspendLayout();
@@ -99,6 +99,15 @@
             this.txtPaymentAmt.Size = new System.Drawing.Size(169, 35);
             this.txtPaymentAmt.TabIndex = 4;
             this.txtPaymentAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.progressBar1.Location = new System.Drawing.Point(248, 312);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(237, 26);
+            this.progressBar1.TabIndex = 13;
             // 
             // comboBoxDownType
             // 
@@ -405,14 +414,6 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.progressBar1.Location = new System.Drawing.Point(217, 312);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(277, 21);
-            this.progressBar1.TabIndex = 13;
             // 
             // frmCalcLoan
             // 

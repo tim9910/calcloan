@@ -182,17 +182,9 @@ namespace calcloan
             TextBox textBox = (TextBox)sender;
             string currentText = textBox.Text;
             string controlName = textBox.Name;
-            string symbolTag;
-			if (textBox.Tag != null)
-			{
-				symbolTag = textBox.Tag.ToString();
-			}
-			else
-			{
-				symbolTag = "";
-			}
+
             // 根據 Tag 移除對應符號和逗號取得純數值
-            string dataValue = currentText.Replace(symbolTag, "").Replace(",", "").Trim();
+            string dataValue = currentText.Replace("NT$", "").Replace("%", "").Replace(",", "").Trim();
 
             // 如果為空或只是小數點，不進行格式化
             if (string.IsNullOrEmpty(dataValue) || dataValue == ".")
@@ -352,6 +344,25 @@ namespace calcloan
                 // 游標移到末尾
                 textBox.SelectionStart = textBox.Text.Length;
             }
+            else
+            {
+                if (controlName == "txtTotalHousePrice") 
+                {
+                    if (dataValue != null && dataValue.Length >=10)
+                    {
+                        msgLabel.Text = spacestr + "房屋總價 0~10,000萬";
+                        msgLabel.Visible = true;
+                    }
+                    else
+                    {
+                        msgLabel.Text = "";
+                        msgLabel.Visible = false;
+                    }
+
+                }
+                msgLabel.Text = spacestr + "輸入的數值無效";
+                msgLabel.Visible = true;
+            }
         }
 
         private void TextBox_Validating(object sender, CancelEventArgs e)
@@ -365,20 +376,11 @@ namespace calcloan
             double val = 0;
             TextBox textBox = (TextBox)sender;
             string currentText = textBox.Text;
-            string symbolTag;
             string formattedText = "";
             string formattedString = "";
-            if (textBox.Tag != null)
-            {
-                symbolTag = textBox.Tag.ToString();
-            }
-            else
-            {
-                symbolTag = "";
-            }
+
             // 根據 Tag 移除對應符號和逗號取得純數值
-            string dataValue = currentText.Replace(symbolTag, "").Replace(",", "").Trim();
-            //if (chk && (symbolTag.Contains("%") || symbolTag.Contains("NT$")))
+            string dataValue = currentText.Replace("NT$", "").Replace("%", "").Replace(",", "").Trim();
             if (chk)
             {
                 if (dataValue.Contains(".") && dataValue.EndsWith("0"))
@@ -488,7 +490,7 @@ namespace calcloan
                     formattedString = "{0:P" + decimalIndex.ToString() + "}";
                     formattedText = string.Format(formattedString, val / 100);
                 }
-                else 
+                else
                 {
                     if (val < 0 || val > 30)
                     {
@@ -504,10 +506,28 @@ namespace calcloan
                     formattedString = "{0:N0}";
                     formattedText = string.Format(formattedString, val);
                 }
-                
+
                 textBox.Text = formattedText;
                 // 游標移到末尾
                 textBox.SelectionStart = textBox.Text.Length;
+            }
+            else
+            {
+                if (textBox.Name == "txtTotalHousePrice")
+                {
+                    if (dataValue != null && dataValue.Length >= 10)
+                    {
+                        msgLabel.Text = spacestr + "房屋總價 0~10,000萬";
+                        msgLabel.Visible = true;
+                        e.Cancel = true;// 阻止焦點離開
+                    }
+                    else
+                    {
+                        msgLabel.Text = "";
+                        msgLabel.Visible = false;
+                    }
+
+                }
             }
         }
 
@@ -520,11 +540,7 @@ namespace calcloan
         private async void btnCalcu_Click(object sender, EventArgs e)
         {
             int downType = comboBoxDownType.SelectedIndex;
-            // init progressBar1
-            progressBar1.Visible = true;
-            progressBar1.Value = 0;
-            progressBar1.Minimum = 0;
-            progressBar1.Maximum = 100;
+
             btnCalcu.Text = "試算中";
             btnCalcu.Enabled = false;
             txtTotalHousePrice.Enabled = false;
@@ -542,20 +558,26 @@ namespace calcloan
             txtLoanTerm.Enabled = false;
             txtAnnualRate.Enabled = false;
             comboBoxGracePeriod.Enabled = false;
-            int totalSteps = 100;
-            await Task.Run(() =>
+
+            // init progressBar1
+            int steps = 100;
+            progressBar1.Visible = true;
+            progressBar1.Maximum = steps;
+            progressBar1.Value = 0;
+            await Task.Run(async () =>
             {
-                for (int i = 0; i < totalSteps; i++)
+                for (int i = 0; i < steps; i++)
                 {
-                    System.Threading.Thread.Sleep(20); // 每 20 毫秒更新一次
-                    int progress = (i + 1) * 100 / totalSteps;
+                    System.Threading.Thread.Sleep(10); // 每 10 毫秒更新一次
+                    int progress = i + 1;
 
                     // 更新progressBar1的值
                     Invoke((Action)(() =>
                     {
-                        progressBar1.Value = i;
+                        progressBar1.Value = progress;
                     }));
                 }
+
             });
 
             // 取得輸入值
@@ -651,29 +673,24 @@ namespace calcloan
             labelTotalPayment.Text = string.Format("{0:C2}", totalPayment);
 
             // finish
-            Invoke((Action)(() =>
+            progressBar1.Visible = false;
+            txtTotalHousePrice.Enabled = true;
+            comboBoxDownType.Enabled = true;
+
+            if (downType == 0) // 選擇百分比
             {
-                progressBar1.Visible = false;
-                txtTotalHousePrice.Enabled = true;
-                comboBoxDownType.Enabled = true;
-
-                if (downType == 0) // 選擇百分比
-                {
-                    txtDownPayment.Enabled = true;
-                }
-                else if (downType == 1) // 選擇金額
-                {
-                    txtPaymentAmt.Enabled = true;
-                }
-                txtAnnualRate.Enabled = true;
-                txtLoanTerm.Enabled = true;
-                txtAnnualRate.Enabled = true;
-                comboBoxGracePeriod.Enabled = true;
-                btnCalcu.Text = "試算";
-                btnCalcu.Enabled = true;
-
-            }));
-
+                txtDownPayment.Enabled = true;
+            }
+            else if (downType == 1) // 選擇金額
+            {
+                txtPaymentAmt.Enabled = true;
+            }
+            txtAnnualRate.Enabled = true;
+            txtLoanTerm.Enabled = true;
+            txtAnnualRate.Enabled = true;
+            comboBoxGracePeriod.Enabled = true;
+            btnCalcu.Text = "試算";
+            btnCalcu.Enabled = true;
 
         }
 

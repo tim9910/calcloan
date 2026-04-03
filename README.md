@@ -179,17 +179,30 @@ $$
 
 ## 測試資料與結果
 
-### 輸入
+### 測試案例１：無寬限期
+
+- 輸入
   - 房屋總價：12,000,000
   - 自備款：20%
   - 年利率：2.15%
   - 貸款年限：30 年
   - 寬限期：無
 
-### 計算結果
+- 計算結果
 
-　　![輸出](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/output.png)
+　![輸出](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/output.png)
 
+### 測試案例２：寬限期２４個月
 
+- 輸入
+  - 房屋總價：12,000,000
+  - 自備款：20%
+  - 年利率：2.15%
+  - 貸款年限：30 年
+  - 寬限期：24個月
+
+- 計算結果
+
+　![輸出](https://github.com/tim9910/tim9910.github.io/blob/main/images/calcloan/output1.png)
 
 

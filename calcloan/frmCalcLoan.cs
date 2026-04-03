@@ -614,48 +614,53 @@ namespace calcloan
 
             // 計算寬限期每月利息（只付利息）
             int graceMonths = comboBoxGracePeriod.SelectedIndex * 12; //取得寬限期:無寬限期為0，12個月為1年，24個月為2年，以此類推
-            decimal monthInterestPayment = loanAmount * monthInterestRate;
+            decimal monthInterestPayment = loanAmount * monthInterestRate;//利息金額＝本金餘額 * 月利率
 
             // 計算寬限期結束後剩下的本金，再重新計算每月還款的金額（本金+利息）
-            int remainingMonths = loanMonths - graceMonths; // 剩下的貸款月數
+            int remainingMonths = loanMonths - graceMonths; //寬限期後剩餘期數
 
             // 計算每月應繳金額 ＝每月應還本金金額 + 每月應付利息金額
             //                  ＝ 貸款本金 * 每月應還本息金額之平均攤還率
             decimal monthlyPayment = 0;
             if (remainingMonths > 0)
             {
-                monthlyPayment = loanAmount * (monthInterestRate * (decimal)Math.Pow((double)(1 + monthInterestRate), remainingMonths)) / ((decimal)Math.Pow((double)(1 + monthInterestRate), remainingMonths) - 1);
+                //每月應付本息金額之平均攤還率
+                decimal rate = (monthInterestRate * (decimal)Math.Pow((double)(1 + monthInterestRate), remainingMonths)) / ((decimal)Math.Pow((double)(1 + monthInterestRate), remainingMonths) - 1);                
+                monthlyPayment = loanAmount * rate;
             }
 
-            // 計算首期利息與本金
-            decimal firstInterest = 0;
-            decimal firstAmount = 0;
+            decimal firstInterest = 0;  //首期利息
+            decimal firstAmount = 0;    //首期本金
+            decimal totalPayment = 0; //總還款金額
+            decimal totalInterest = 0; //總利息支出
 
-            if (graceMonths > 0)
+            if (graceMonths > 0)    //有寬限期
             {
                 // 寬限期內，只支付利息，不還本金
                 firstInterest = monthInterestPayment; // 首期利息為寬限期每月利息
                 firstAmount = 0; // 首期本金為0
+
+                //每月應繳金額(寬限期內) ＝ 利息金額 + 本金 ＝本金餘額 * 月利率 + 0
+
+                //每月應繳金額(寬限期後)  本利和
+                
+                // 總還款金額 = 寬限期內每月應繳金額 * 寬限期月數 + 寬限期後每月應繳金額 * 寬限期後月數
+                totalPayment = monthInterestPayment * graceMonths + monthlyPayment * remainingMonths;
+
             }
             else
             {
                 // 無寬限期，正常計算首期利息、本金
-                firstInterest = loanAmount * monthInterestRate;//每月應付利息金額＝本金餘額 * 月利率
+                firstInterest = monthInterestPayment;//每月應付利息金額＝本金餘額 * 月利率
                 firstAmount = monthlyPayment - firstInterest;  //每月應還本金金額＝平均每月應還本息金額 - 每月應付利息金額
 
+                // 總還款金額 = 每月應繳金額 * 貸款月數
+                totalPayment = monthlyPayment * remainingMonths;
+
             }
 
-            // 計算 總利息支出 = 寬限期每月利息 * 寬限期月數 + 寬限期結束後每月應繳金額 * 剩餘月數 - 貸款總金額
-            decimal totalInterestLoan = 0;
-            if (remainingMonths > 0)
-            {
-                totalInterestLoan = monthlyPayment * remainingMonths - loanAmount;
-            }
-            // 寬限期只付利息，不付本金
-            decimal totalInterest = monthInterestPayment * graceMonths + totalInterestLoan;
-
-            // 計算 總還款金額 = 總利息支出 + 貸款總金額
-            decimal totalPayment = totalInterest + loanAmount;
+            // 總利息支出 = 總還款金額 - 貸款總金額
+            totalInterest = totalPayment - loanAmount;
 
             //// 顯示計算結果
             // 貸款總金額
